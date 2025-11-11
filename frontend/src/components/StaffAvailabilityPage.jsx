@@ -2,7 +2,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { API_BASE_URL } from "../App";
 import { useAuth } from "../context/AuthContext";
-import "../css/staffavailability.css";
+import "../css/StaffAvailability.css";
 
 export default function StaffAvailabilityPage() {
     const { user } = useAuth();
