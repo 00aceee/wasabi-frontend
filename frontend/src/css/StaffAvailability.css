@@ -1,0 +1,332 @@
+/* =========================================================
+   STAFF AVAILABILITY PAGE
+========================================================= */
+
+.availability-page {
+  padding: 20px;
+  background: #1e1e1e;
+  color: #fff;
+  border-radius: 10px;
+  max-width: 1000px;
+  margin: 20px auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.availability-page h1 {
+  color: #d4af37;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-bottom: 2px solid #d4af37;
+  padding-bottom: 15px;
+}
+
+.availability-page h2 {
+  color: var(--gold);
+  font-size: 1.3rem;
+  margin: 25px 0 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.availability-page label {
+  display: block;
+  color: #c0c0c0;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.availability-page select {
+  width: 100%;
+  padding: 10px;
+  background: #2c2c2c;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.availability-page select:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.date-input {
+  padding: 10px;
+  border: 2px solid #333;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  background-color: #f8f8f8;
+}
+
+.date-input:focus {
+  border-color: var(--gold);
+  outline: none;
+  box-shadow: #333;
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Add your own icon as background */
+.date-input {
+  color: var(--text);
+  background: url('date.png') no-repeat right 10px center;
+  background-size: 20px;
+}
+
+/* =========================================================
+   TIME GRID (Available Time Slots)
+========================================================= */
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 10px;
+  margin: 15px 0 30px;
+}
+
+.time-grid button {
+  padding: 8px;
+  border: 1px solid #555;
+  background: #2c2c2c;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.time-grid button:hover {
+  background: #3a3a3a;
+  border-color: var(--gold);
+}
+
+.time-grid button.selected {
+  background: #dc3545;
+  border-color: var(--bg);
+  color: white;
+  font-weight: bold;
+}
+
+.time-grid button:disabled {
+  background: #1a1a1a;
+  color: #666;
+  cursor: not-allowed;
+  border-color: #333;
+}
+
+/* =========================================================
+   READ-ONLY INFORMATION DISPLAY
+========================================================= */
+.readonly-info {
+  background: #252525;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  border: 1px solid #444;
+}
+
+.readonly-info h3 {
+  color: #d4af37;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.readonly-info input,
+.readonly-info textarea {
+  background: #333;
+  color: white;
+  border: 1px solid #555;
+  padding: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+}
+
+.readonly-info input[readonly],
+.readonly-info textarea[readonly] {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.readonly-info textarea {
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+}
+
+.unavailability-list {
+  margin-top: 2rem;
+}
+
+.unavailability-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.unavailability-list th,
+.unavailability-list td {
+  background: #333  ;
+  border: 1px solid var(--gold);
+  color: #cacaca;
+  padding: 8px;
+  text-align: left;
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+.availability-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+  justify-content: center;
+}
+
+.save-btn {
+  background: var(--bg);
+  color: var(--text);
+  padding: 12px 30px;
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.save-btn:hover {
+  background: var(--gold);
+}
+
+.cancel-btn {
+  background: #dc3545;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background: #c82333;
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+.clear-btn {
+  background: #ffc107;
+  color: #000;
+}
+
+.clear-btn:hover {
+  background: #e0a800;
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+}
+
+/* =========================================================
+   STATUS MESSAGES
+========================================================= */
+.status-message {
+  padding: 15px;
+  border-radius: 6px;
+  margin: 20px 0;
+  text-align: center;
+  font-weight: 500;
+}
+
+.status-message.success {
+  background: rgba(0, 200, 83, 0.1);
+  color: #00c853;
+  border: 1px solid #00c853;
+}
+
+.status-message.error {
+  background: rgba(220, 53, 69, 0.1);
+  color: #dc3545;
+  border: 1px solid #dc3545;
+}
+
+.status-message.info {
+  background: rgba(33, 150, 243, 0.1);
+  color: #2196f3;
+  border: 1px solid #2196f3;
+}
+
+/* =========================================================
+   LOADING STATE
+========================================================= */
+.loading-spinner {
+  text-align: center;
+  padding: 40px;
+  color: #d4af37;
+  font-size: 1.2rem;
+}
+
+.loading-spinner::after {
+  content: '...';
+  animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+
+  0%,
+  20% {
+    content: '.';
+  }
+
+  40% {
+    content: '..';
+  }
+
+  60%,
+  100% {
+    content: '...';
+  }
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
+@media (max-width: 768px) {
+  .availability-page {
+    padding: 15px;
+    margin: 10px;
+  }
+
+  .availability-page h1 {
+    font-size: 1.5rem;
+  }
+
+  .time-grid {
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 8px;
+  }
+
+  .availability-actions {
+    flex-direction: column;
+  }
+
+  .availability-actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .time-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .time-grid button {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
+}

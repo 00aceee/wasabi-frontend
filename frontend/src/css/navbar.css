@@ -1,0 +1,104 @@
+/* =========================================================
+   NAVBAR + HOMEPAGE HERO
+   - Keep the header compact on all pages
+   - Apply the large hero background and overlay only on the homepage
+========================================================= */
+
+:root {
+  --gold: #c5a47e;
+}
+
+.site-header .navbar {
+  position: absolute;
+  height: 30vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 28px;
+  z-index: 1000;
+  background: url(/assets/hero-background.png);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  border-bottom: 1px solid rgba(197, 164, 126, 0.06);
+  font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif !important;
+}
+
+.nav-left img.Logo {
+  margin-top: 20px;
+  height: 50px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 18px;
+}
+
+.nav-item {
+  margin-top: 20px;
+  color: var(--gold);
+  text-decoration: none;
+  padding: 8px 6px;
+  border-radius: 6px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: color 0.18s ease, background 0.18s ease;
+}
+
+.nav-item:hover {
+  color: antiquewhite;
+  cursor: pointer;
+}
+
+.nav-right .profile-btn {
+  margin-top: 20px;
+  background: none;
+  border: 1px solid var(--gold);
+  color: #fff;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50px;
+  font-size: 2rem;
+}
+
+@media (max-width: 900px) {
+  .site-header .navbar {
+    height: auto;
+    
+  }
+
+  .nav-left {
+    display: flex;
+    padding: 10px;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-top: 8px;
+    padding: 8px; 
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+  }
+
+  .nav-item {
+    font-size: 1rem;
+  }
+
+  .nav-right {
+    display: flex;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-item {
+    font-size: 0.65rem;
+  }
+
+  .site-header .navbar {
+    padding: 10px 12px;
+  }
+}
