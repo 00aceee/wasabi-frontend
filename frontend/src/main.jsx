@@ -10,7 +10,7 @@ import './css/admin.css'
 import './css/forgot_password.css'
 import './index.css'
 import './css/navbar.css'
-import './css/staffavailability.css'
+import './css/StaffAvailability.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
