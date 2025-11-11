@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
-import { API_BASE_URL } from '../App';
 import Navbar from '../components/Navbar.jsx';
 import ProfileMenu from '../components/ProfileMenu.jsx';
 import LoginModal from '../components/LoginModal.jsx';
