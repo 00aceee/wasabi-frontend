@@ -14,7 +14,7 @@ import StaffAvailabilityPage from './components/StaffAvailabilityPage.jsx';
 
 import { AuthProvider, useAuth } from './context/AuthContext';
 
-const API_BASE_URL = import.meta?.env?.VITE_API_BASE_URL ?? '';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 function ProtectedRoute({ children, adminOnly = false, onLoginRequired }) {
   const { user, loading } = useAuth();
