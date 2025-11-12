@@ -679,7 +679,7 @@ export default function AdminPage() {
                   <tbody>
                     {getFilteredAppointments().map((apt) => (
                       <tr key={apt.id}>
-                        <td>{apt.id}</td>
+                        <td>{apt.display_id || (apt.id ? apt.id.slice(-6) : '')}</td>
                         <td>{apt.fullname}</td>
                         <td>{apt.service}</td>
                         <td>{apt.artist_name}</td>
@@ -823,7 +823,7 @@ export default function AdminPage() {
                   <tbody>
                     {getFilteredHistory().map((apt) => (
                       <tr key={apt.id}>
-                        <td>{apt.id}</td>
+                        <td>{apt.display_id || (apt.id ? apt.id.slice(-6) : '')}</td>
                         <td>{apt.fullname}</td>
                         <td>{apt.service}</td>
                         <td>{apt.artist_name}</td>
