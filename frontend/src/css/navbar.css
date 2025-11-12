@@ -68,23 +68,24 @@
     background-size: cover;
     background-position: center;
     overflow-x: hidden;
+    display: flex;
+    flex-wrap: wrap; /* allow second row for menu */
+    align-items: center;
   }
 
-  .nav-left {
-    display: flex;
-    padding: 10px;
-  }
+  .nav-left { display: flex; padding: 10px; order: 1; }
 
   .nav-menu {
+    order: 3; /* put menu on its own full-width row */
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around; /* distribute links across the row */
     align-items: center;
-    flex-wrap: wrap; /* allow wrapping instead of horizontal scroll */
+    flex-wrap: wrap;
     width: 100%;
-    margin-top: 8px;
-    padding: 6px;
-    gap: 6px;
+    margin-top: 6px;
+    padding: 6px 8px;
+    gap: 8px 12px; /* row/column gaps */
     border-top: 1px solid rgba(255, 255, 255, 0.03);
   }
 
@@ -94,10 +95,7 @@
     letter-spacing: 0.3px;
   }
 
-  .nav-right {
-    display: flex;
-    padding: 10px;
-  }
+  .nav-right { display: flex; padding: 10px; order: 2; margin-left: auto; }
 
   .nav-right .profile-btn {
     font-size: 1.4rem;
