@@ -16,11 +16,22 @@ export default function StaffAvailabilityPage() {
     const todayIso = useMemo(() => new Date().toISOString().split('T')[0], []);
     const [unavailabilityList, setUnavailabilityList] = useState([]);
 
+    // Map UI role to backend specialization
+    const mapRole = (r) => r?.toLowerCase() === 'haircut' ? 'Barber' : (r?.toLowerCase() === 'tattoo' ? 'TattooArtist' : r);
+
     useEffect(() => {
         if (user.role === "Admin" && role) {
-            fetch(`${API_BASE_URL}/api/admin/staff?role=${role}`)
-                .then((res) => res.json())
-                .then((data) => setStaffList(data))
+            const mapped = mapRole(role);
+            const url = `${API_BASE_URL}/api/admin/staff?role=${encodeURIComponent(mapped)}`;
+            fetch(url, { credentials: 'include' })
+                .then(async (res) => {
+                    if (!res.ok) {
+                        const text = await res.text();
+                        throw new Error(`HTTP ${res.status}: ${text}`);
+                    }
+                    return res.json();
+                })
+                .then((data) => setStaffList(Array.isArray(data) ? data : []))
                 .catch((err) => console.error("Error loading staff:", err));
         }
     }, [role, user.role]);
@@ -71,19 +82,17 @@ export default function StaffAvailabilityPage() {
         }
 
         const availableTimes = defaults.filter(t => !unavailableTimes.includes(t));
-        if (availableTimes.length === 0) {
-            alert("All default hours were marked unavailable; no availability to save for this date.");
-            return;
-        }
+        
 
         setSaving(true);
         const res = await fetch(`${API_BASE_URL}/api/staff/availability`, {
             method: "POST",
+            credentials: 'include',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                staff_id: staffId,
-                available_date: date,
-                available_times: availableTimes,
+                staffId: staffId,
+                date: date,
+                times: Array.isArray(unavailableTimes) ? unavailableTimes.map(String) : [],
             }),
         });
 
