@@ -87,7 +87,7 @@ export default function ProfileMenu({ onClose, onToggleTheme, theme }) {
                   const now = new Date();
                   const status = (apt.status || '').toLowerCase();
                   showCancel = isValid(aptDt) &&
-                    !['cancelled','completed','abandoned','done'].includes(status) &&
+                    !['cancelled','completed','abandoned','done','denied'].includes(status) &&
                     aptDt > now;
                 } catch (e) {
                   showCancel = false;
