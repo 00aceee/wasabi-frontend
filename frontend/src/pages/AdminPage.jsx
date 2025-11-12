@@ -279,7 +279,9 @@ export default function AdminPage() {
       });
 
       if (response.ok) {
-        alert(`✅ Appointment #${id} marked as ${status}`);
+        const apt = (appointments || []).find(a => a.id === id);
+        const code = apt?.display_id || (id ? id.slice(-6) : id);
+        alert(`✅ Appointment #${code} marked as ${status}`);
         await loadAppointments();
       } else {
         const t = await response.text();
