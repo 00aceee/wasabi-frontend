@@ -691,16 +691,16 @@ export default function AdminPage() {
                   <tbody>
                     {getFilteredAppointments().map((apt) => (
                       <tr key={apt.id}>
-                        <td>{apt.display_id || (apt.id ? apt.id.slice(-6) : '')}</td>
-                        <td>{apt.fullname}</td>
-                        <td>{apt.service}</td>
-                        <td>{apt.artist_name}</td>
-                        <td>{apt.appointment_date}</td>
-                        <td>{apt.time}</td>
-                        <td className={`status ${apt.status.toLowerCase() || `unknown`}`}>
+                        <td data-label="ID">{apt.display_id || (apt.id ? apt.id.slice(-6) : '')}</td>
+                        <td data-label="Name">{apt.fullname}</td>
+                        <td data-label="Service">{apt.service}</td>
+                        <td data-label="Artist">{apt.artist_name}</td>
+                        <td data-label="Date">{apt.appointment_date}</td>
+                        <td data-label="Time">{apt.time}</td>
+                        <td data-label="Status" className={`status ${apt.status.toLowerCase() || `unknown`}`}>
                           {apt.status}
                         </td>
-                        <td>
+                        <td data-label="Actions">
                           {apt.status === 'Pending' ? (
                             isAdmin || isStaff ? (
                               <>
@@ -835,13 +835,13 @@ export default function AdminPage() {
                   <tbody>
                     {getFilteredHistory().map((apt) => (
                       <tr key={apt.id}>
-                        <td>{apt.display_id || (apt.id ? apt.id.slice(-6) : '')}</td>
-                        <td>{apt.fullname}</td>
-                        <td>{apt.service}</td>
-                        <td>{apt.artist_name}</td>
-                        <td>{apt.appointment_date}</td>
-                        <td>{apt.time}</td>
-                        <td className={`status ${apt.status.toLowerCase()}`}>{apt.status}</td>
+                        <td data-label="ID">{apt.display_id || (apt.id ? apt.id.slice(-6) : '')}</td>
+                        <td data-label="Name">{apt.fullname}</td>
+                        <td data-label="Service">{apt.service}</td>
+                        <td data-label="Artist">{apt.artist_name}</td>
+                        <td data-label="Date">{apt.appointment_date}</td>
+                        <td data-label="Time">{apt.time}</td>
+                        <td data-label="Status" className={`status ${apt.status.toLowerCase()}`}>{apt.status}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -932,10 +932,10 @@ export default function AdminPage() {
                   <tbody>
                     {getFilteredUsers().map((user, index) => (
                       <tr key={index}>
-                        <td>{user.fullname}</td>
-                        <td>{user.username}</td>
-                        <td>{user.email}</td>
-                        <td>{user.role}</td>
+                        <td data-label="Full Name">{user.fullname}</td>
+                        <td data-label="Username">{user.username}</td>
+                        <td data-label="Email">{user.email}</td>
+                        <td data-label="Role">{user.role}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -1018,13 +1018,13 @@ export default function AdminPage() {
                   <tbody>
                     {getFilteredFeedback().map((f) => (
                       <tr key={f.id}>
-                        <td>{f.user}</td>
-                        <td>{renderStars(f.stars)}</td>
-                        <td>{f.message}</td>
-                        <td className={`status ${f.resolved ? 'approved' : 'pending'}`}>
+                        <td data-label="User">{f.user}</td>
+                        <td data-label="Rating">{renderStars(f.stars)}</td>
+                        <td data-label="Message">{f.message}</td>
+                        <td data-label="Status" className={`status ${f.resolved ? 'approved' : 'pending'}`}>
                           {f.resolved ? 'Resolved' : 'Pending'}
                         </td>
-                        <td>
+                        <td data-label="Actions">
                           {(!f.resolved && !(f.reply && f.reply.length > 0)) && (
                             <button
                               className="action-btn reply"
