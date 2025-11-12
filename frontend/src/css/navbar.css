@@ -65,7 +65,8 @@
 @media (max-width: 900px) {
   .site-header .navbar {
     height: auto;
-    
+    background-size: cover;
+    background-position: center;
   }
 
   .nav-left {
@@ -81,6 +82,7 @@
     margin-top: 8px;
     padding: 8px; 
     border-top: 1px solid rgba(255, 255, 255, 0.03);
+    overflow-x: auto;
   }
 
   .nav-item {
@@ -100,5 +102,6 @@
 
   .site-header .navbar {
     padding: 10px 12px;
+    background: rgba(0,0,0,0.6);
   }
 }
