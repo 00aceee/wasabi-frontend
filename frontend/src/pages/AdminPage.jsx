@@ -16,6 +16,7 @@ export default function AdminPage() {
   const isStaff = hasAnyRole(['barber', 'tattooartist']);
   const [activePanel, setActivePanel] = useState('dashboard');
   const [appointments, setAppointments] = useState([]);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [historyAppointments, setHistoryAppointments] = useState([]);
   const [pendingActions, setPendingActions] = useState({});
   const [pendingFeedbackIds, setPendingFeedbackIds] = useState({});
@@ -545,51 +546,51 @@ export default function AdminPage() {
   };
 
   return (
-    <div className="dark-mode admin-container">
+    <div className={`dark-mode admin-container ${sidebarOpen ? 'sidebar-open' : ''}`}>
       {/* Sidebar */}
-      <aside className="sidebar">
+      <aside className="sidebar" id="admin-sidebar">
         <h2>Admin Menu</h2>
         <button
           className={`menu-btn ${activePanel === 'dashboard' ? 'active-menu-btn' : ''}`}
-          onClick={() => setActivePanel('dashboard')}
+          onClick={() => { setActivePanel('dashboard'); setSidebarOpen(false); }}
         >
           Dashboard
         </button>
         <button
           className={`menu-btn ${activePanel === 'availability' ? 'active-menu-btn' : ''}`}
-          onClick={() => setActivePanel('availability')}
+          onClick={() => { setActivePanel('availability'); setSidebarOpen(false); }}
         >
           Staff Unavailability
         </button>
         <button
           className={`menu-btn ${activePanel === 'appointments' ? 'active-menu-btn' : ''}`}
-          onClick={() => setActivePanel('appointments')}
+          onClick={() => { setActivePanel('appointments'); setSidebarOpen(false); }}
         >
           Appointments
         </button>
         <button
           className={`menu-btn ${activePanel === 'history' ? 'active-menu-btn' : ''}`}
-          onClick={() => setActivePanel('history')}
+          onClick={() => { setActivePanel('history'); setSidebarOpen(false); }}
         >
           Appointment History
         </button>
         {isAdmin && (
           <button
             className={`menu-btn ${activePanel === 'users' ? 'active-menu-btn' : ''}`}
-            onClick={() => setActivePanel('users')}
+            onClick={() => { setActivePanel('users'); setSidebarOpen(false); }}
           >
             Users Account
           </button>
         )}
         <button
           className={`menu-btn ${activePanel === 'feedback' ? 'active-menu-btn' : ''}`}
-          onClick={() => setActivePanel('feedback')}
+          onClick={() => { setActivePanel('feedback'); setSidebarOpen(false); }}
         >
           View Feedback
         </button>
         <button
           className="menu-btn"
-          onClick={() => navigate('/')}
+          onClick={() => { navigate('/'); setSidebarOpen(false); }}
         >
           Go to Main Window
         </button>
@@ -600,6 +601,15 @@ export default function AdminPage() {
 
       {/* Main Content */}
       <main className="content">
+        <button
+          className="sidebar-toggle"
+          type="button"
+          aria-expanded={sidebarOpen}
+          aria-controls="admin-sidebar"
+          onClick={() => setSidebarOpen(o => !o)}
+        >
+          ☰ Menu
+        </button>
         {activePanel === 'dashboard' && (
           <>
             <DashboardPanel
@@ -1054,6 +1064,7 @@ export default function AdminPage() {
           </>
         )}
       </main>
+      {sidebarOpen && <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />}
       {showAddUserModal && (
         <AdminAddUserModal
           onClose={() => setShowAddUserModal(false)}

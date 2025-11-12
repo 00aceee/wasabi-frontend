@@ -6,6 +6,9 @@ body.dark-mode {
   color: white;
 }
 
+/* Toggle button hidden by default (desktop) */
+.sidebar-toggle { display: none; }
+
 /* 🧭 LAYOUT */
 .admin-container {
   display: flex;
@@ -584,37 +587,48 @@ body.dark-mode {
 ---------------------------------------------------------- */
 @media (max-width: 900px) {
   .admin-container {
-    flex-direction: column;
     height: auto;
     min-height: 100vh;
   }
 
+  /* Off-canvas sidebar */
   .sidebar {
-    width: 100%;
-    position: sticky;
+    position: fixed;
     top: 0;
-    flex-direction: row;
-    gap: 8px;
-    align-items: center;
-    padding: 10px;
-    overflow-x: auto;
-    white-space: nowrap;
+    left: 0;
+    bottom: 0;
+    width: 80%;
+    max-width: 320px;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    z-index: 2000;
   }
 
-  .sidebar h2 {
-    display: none;
+  .admin-container.sidebar-open .sidebar {
+    transform: translateX(0);
   }
 
-  .menu-btn {
-    flex: 0 0 auto;
-    font-size: 14px;
+  .sidebar h2 { margin-bottom: 10px; }
+
+  .sidebar-toggle {
+    display: inline-block;
+    margin-bottom: 10px;
+    background: #333;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    border-radius: 6px;
     padding: 8px 12px;
   }
 
-  .logout-btn {
-    margin-top: 0;
-    margin-left: auto;
-    padding: 8px 12px;
+  .sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1500;
   }
 
   .content {
@@ -635,23 +649,11 @@ body.dark-mode {
     width: 100%;
   }
 
-  .show-page {
-    margin-left: 0;
-  }
+  .show-page { margin-left: 0; }
 
-  .table {
-    display: block;
-    overflow-x: auto;
-    border-radius: 6px;
-  }
-
-  .table thead, .table tbody, .table tr, .table th, .table td {
-    white-space: nowrap;
-  }
-
-  .table th, .table td {
-    padding: 10px 12px;
-  }
+  .table { display: block; overflow-x: auto; border-radius: 6px; }
+  .table thead, .table tbody, .table tr, .table th, .table td { white-space: nowrap; }
+  .table th, .table td { padding: 10px 12px; }
 }
 
 @media (max-width: 480px) {
