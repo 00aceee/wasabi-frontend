@@ -67,6 +67,7 @@
     height: auto;
     background-size: cover;
     background-position: center;
+    overflow-x: hidden;
   }
 
   .nav-left {
@@ -78,30 +79,41 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* allow wrapping instead of horizontal scroll */
     width: 100%;
     margin-top: 8px;
-    padding: 8px; 
+    padding: 6px;
+    gap: 6px;
     border-top: 1px solid rgba(255, 255, 255, 0.03);
-    overflow-x: auto;
   }
 
   .nav-item {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    padding: 6px 4px;
+    letter-spacing: 0.3px;
   }
 
   .nav-right {
     display: flex;
     padding: 10px;
   }
+
+  .nav-right .profile-btn {
+    font-size: 1.4rem;
+    padding: 4px 6px;
+  }
+
+  .nav-left img.Logo { height: 40px; margin-top: 10px; }
 }
 
 @media (max-width: 480px) {
-  .nav-item {
-    font-size: 0.65rem;
-  }
+  .nav-item { font-size: 0.8rem; padding: 6px 4px; }
 
   .site-header .navbar {
     padding: 10px 12px;
     background: rgba(0,0,0,0.6);
   }
+
+  .nav-right .profile-btn { font-size: 1.2rem; }
 }
