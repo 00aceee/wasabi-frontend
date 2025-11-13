@@ -232,6 +232,23 @@ export default function AdminPage() {
       console.error('Failed to load monthly report', e);
     }
   };
+
+  const getAppointmentsSortParam = () => {
+    if (!appointmentsSort) return null;
+    if (appointmentsSort === 'date') {
+      return appointmentsSortDirection === 'desc' ? 'date_desc' : 'date';
+    }
+    if (appointmentsSortDirection === 'desc') {
+      const descMap = {
+        name: 'name_desc',
+        service: 'service_desc',
+        artist: 'artist_desc',
+      };
+      return descMap[appointmentsSort] || `${appointmentsSort}_desc`;
+    }
+    return appointmentsSort;
+  };
+
   const loadAppointments = async () => {
     setLoading(true);
     try {
@@ -247,11 +264,8 @@ export default function AdminPage() {
       if (debouncedAppointmentsSearch)
         params.append("q", debouncedAppointmentsSearch);
 
-      if (appointmentsSort)
-        params.append(
-          "sort",
-          appointmentsSort + (appointmentsSortDirection === "desc" ? "_desc" : "")
-        );
+      const sortParam = getAppointmentsSortParam();
+      if (sortParam) params.append("sort", sortParam);
 
       if (isStaff && !isAdmin && user?.fullname)
         params.append("artist", user.fullname);
